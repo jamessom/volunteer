@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= @site_name %> - <%= @site_description %></title>
+    <title><%= application_metadata[:site_name] %> - <%= application_metadata[:site_description] %></title>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag "favicon-32x32.png" %>
     <!--Import Google Icon Font-->
@@ -19,14 +19,37 @@
           <div class="container">
             <a href="<%= root_path %>" class="brand-logo"><%= @site_name %></a>
             <ul id="nav-mobile" class="right">
-              <li><%= link_to("Sign in", new_user_session_path) %></li>
+              <% if new_user_session_path %>
+                  <li><%= link_to("Home", root_path) %></li>
+              <% else %>
+                  <li><%= link_to("Home", root_path) %></li>
+                  <li><%= link_to("Sign in", new_user_session_path) %></li>
+              <% end %>
             </ul>
           </div>
         </div>
       </nav>
 
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if notice %>
+          <div class="row">
+            <div class="col s6 offset-s3">
+              <div class="card-panel orange darken-1">
+                <span class="white-text"><%= notice %></span>
+              </div>
+            </div>
+          </div>
+      <% end %>
+
+      <% if alert %>
+          <div class="row">
+            <div class="col s6 offset-s3">
+              <div class="card-panel red darken-1">
+                <span class="white-text"><%= alert %></span>
+              </div>
+            </div>
+          </div>
+      <% end %>
+
     </header>
 
     <div class="container">
@@ -37,14 +60,14 @@
       <div class="container">
         <div class="row">
           <div class="col l6 s12">
-            <h5 class="white-text"><%= @site_name %></h5>
+            <h5 class="white-text"><%= application_metadata[:site_name] %></h5>
             <p class="grey-text text-lighten-4">Uma uniciativa onebitcode.com.br</p>
           </div>
         </div>
       </div>
       <div class="footer-copyright">
         <div class="container">
-          © <%= Time.now.strftime("%Y")  %> Copyright <% @sitename %> & <a class="grey-text text-lighten-4" href="#">onebitcode.com.br</a>
+          © <%= Time.now.strftime("%Y")  %> Copyright <%= application_metadata[:site_name] %> & <a class="grey-text text-lighten-4" href="#">onebitcode.com.br</a>
           <%= link_to "Sign in", new_user_session_path, class: "grey-text text-lighten-4 right" %></a>
         </div>
       </div>
