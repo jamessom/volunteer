@@ -28,6 +28,10 @@ execute os comandos:
  - `docker-compose up` para instalar as `gemas`, criar banco de dados e inicializar
  o servidor
 
+ ## populando o banco de dados para os dados iniciais
+
+ `docker-compose run --rm app bundle exec rails db:seed`
+
 ### Iniciando e finalizando containers
 Para inicializar execute o comando `docker-compose start` e
 para finalizar `docker-compose stop`
