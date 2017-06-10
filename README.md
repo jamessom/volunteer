@@ -54,3 +54,6 @@ Execute o comando `docker-compose logs -f --tail=100 rails`
 
 ### Se quiser rodar outros comandos
 Será necessário executar o comando completo `bundle exec ...`
+
+## para utilizar o login social (facebook)
+Será necessário editar o arquivo `.env.example` para `.env` e inserir as credênciais
