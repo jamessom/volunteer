@@ -1,24 +1,59 @@
-# Volunteer
 
-_git clone ..._
+## Comece por aqui ;)
 
-_git add upstream ..._
+- Crie um novo `branch` para a feature: `git checkout -b my-new-feature`
+- Faça o `Commit` das suas alterações: `git commit -am 'Feat/Add some feature`
+- Empurre suas alterações para o Github: `git push origin my-new-feature`
+- Crie um novo `Pull Request`
 
-_..._
+## Como escrever as mensagens de commit
 
+Para manter nossos `Pull Request` organizados, vamos adotar as seguintes
+[nomeclaturas](https://seesparkbox.com/foundry/semantic_commit_messages)
+em mensagens de commits.
 
-## Basic commands
-- Clone the repo
-- in folder project run command ```docker-compose build``` to create all necessary
- components
-- after command run ```docker-compose up``` to cache gems, create database and 
-initialize server
+- chore: add Oyster build script
+- docs: explain hat wobble
+- feat: add beta sequence
+- fix: remove broken confirmation message
+- refactor: share logic between 4d3d3d3 and flarhgunnstow
+- style: convert tabs to spaces
+- test: ensure Tayne retains clothing
 
-### if you need to enter in container
-run command ```docker-compose run --rm app```
+## Rodando ambiente com Docker
 
-## if you need to use rails console
-run command ```docker-compose run --rm app bundle exec rails c```
+Acesse o diretório em que o repositório foi clonado através do terminal e
+execute os comandos:
+ - `docker-compose build` para compilar imagens, criar containers etc.
+ - `docker-compose up` para instalar as `gemas`, criar banco de dados e inicializar
+ o servidor
 
-### if you need run another command
-_you should have use complete path like ```... bundle exec ...```_ 
+ ## populando o banco de dados para os dados iniciais
+
+ `docker-compose run --rm app bundle exec rails db:seed`
+
+### Iniciando e finalizando containers
+Para inicializar execute o comando `docker-compose start` e
+para finalizar `docker-compose stop`
+
+### Acessando o container rails
+
+Execute o comando `docker-compose run --rm app`
+
+### Acessando o console
+
+Execute o comando `docker-compose run --rm app bundle exec rails c`
+
+### Acessando o terminal do container
+
+Execute o comando `docker-compose exec app bash`
+
+### Visualizando o log do servidor
+
+Execute o comando `docker-compose logs -f --tail=100 rails`
+
+### Se quiser rodar outros comandos
+Será necessário executar o comando completo `bundle exec ...`
+
+## para utilizar o login social (facebook)
+Será necessário editar o arquivo `.env.example` para `.env` e inserir as credênciais
